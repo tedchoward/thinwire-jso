@@ -2,8 +2,8 @@
 <project name="ThinWire JavaScript Optimizer" default="help" basedir=".">
 	<target name="-init">
 		<!-- Path locations -->
-		<property name="path.library" value="../lib"/>
-		<property name="path.temp" value="../temp"/>
+		<property name="path.library" value="lib"/>
+		<property name="path.temp" value="temp"/>
 		<property name="path.source" value="${path.temp}_src"/>
 		<property name="path.binary" value="${path.temp}_bin"/>
 		
@@ -25,7 +25,7 @@
 
 		<!-- Copy source files to working folder -->
 		<copy todir="${path.source}" overwrite="true">
-			<fileset dir="../src" defaultexcludes="yes">
+			<fileset dir="src" defaultexcludes="yes">
 				<include name="thinwire/tools/jso/**/*"/>
 			</fileset>
 		</copy>
@@ -58,7 +58,7 @@
 
 		<mkdir dir="${path.temp}"/>
 		
-		<unzip src="../${versionInfo.originalName}-${versionInfo.productVersion}.zip" dest="${path.temp}"/>
+		<unzip src="${versionInfo.originalName}-${versionInfo.productVersion}.zip" dest="${path.temp}"/>
 		
 		<taskdef name="jso" classname="thinwire.tools.jso.AntTask">
 			<classpath>
@@ -72,7 +72,7 @@
     </target>
 	
 	<target name="-jar">
-		<jar jarfile="../${versionInfo.originalFilename}" basedir="${path.temp}">
+		<jar jarfile="${versionInfo.originalFilename}" basedir="${path.temp}">
 			<manifest>
 				<attribute name="Manifest-Version" value="2.0"/>
 				<attribute name="Built-By" value="${user.name}"/>
@@ -88,21 +88,21 @@
 	
 	<target name="-zip">
 		<copy todir="${path.binary}" flatten="true">
-			<fileset dir="../">
+			<fileset dir="./">
 				<include name="${versionInfo.originalFilename}"/>
 			</fileset>
 			
-			<fileset dir="${path.library}" includes="*/**"/>
+			<fileset dir="${path.library}" includes="*/**" excludes="ant*.jar"/>
 		</copy>	
 			
-		<zip destfile="../${versionInfo.originalName}-${versionInfo.productVersion}.zip" basedir="${path.binary}" filesonly="true"/>
+		<zip destfile="${versionInfo.originalName}-${versionInfo.productVersion}.zip" basedir="${path.binary}" filesonly="true"/>
 	</target>
 	
 	<target name="-clean">
 		<delete dir="${path.temp}"/>
 		<delete dir="${path.source}"/>
 		<delete dir="${path.binary}"/>
-		<delete file="../${versionInfo.originalFilename}"/>
+		<delete file="${versionInfo.originalFilename}"/>
 	</target>
 	
 	<!-- Archive the source, including everything needed to build the framework -->
@@ -110,14 +110,14 @@
 	
 	<target name="-zipSource">		
 		<copy todir="${path.temp}" overwrite="true">
-			<fileset dir="../" defaultexcludes="yes">
+			<fileset dir="./" defaultexcludes="yes">
 				<include name="lib/**/*"/>
 				<include name="src/**/*"/>
 				<include name="build/**/*"/>
 			</fileset>
 		</copy>
 
-		<zip destfile="../${versionInfo.originalName}-${versionInfo.productVersion}-src.zip"><fileset dir="${path.temp}"/></zip>
+		<zip destfile="${versionInfo.originalName}-${versionInfo.productVersion}-src.zip"><fileset dir="${path.temp}"/></zip>
 	</target>
 
 	<target name="help">
