@@ -103,9 +103,13 @@ public final class Optimizer {
     private int currentToken;
     
     public Optimizer() {
+    	this(new HashMap<String, String>());
+    }
+    
+    public Optimizer(Map<String, String> nameMap) {
         blockStack = new ArrayList<BlockInfo>();
         usedNameMap = new HashSet<String>();
-        varMap = new HashMap<String, String>();
+        varMap = nameMap;
         constSet = new HashSet<String>();        
         constSet.add("true");
         constSet.add("false");
@@ -155,6 +159,15 @@ public final class Optimizer {
         }
         
         return decompile(script);
+    }
+    
+    public Map<String, String> getNameMap() {
+        if (analyzeNames) {
+            analyzeNames = false;
+            assignNames(varMap);
+        }
+
+        return varMap;
     }
     
     public String getNameMapScript() {

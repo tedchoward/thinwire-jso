@@ -66,8 +66,8 @@
 			</classpath>
 		</taskdef>
 
-		<jso srcdir="C:/" destdir="C:/TEMP" namemap="ThinWire_v1.2_concat.js">
-			<include name="ThinWire_v1.2_concat.js"/>
+		<jso srcdir="./" destdir="./lib" namemap="test.js">
+			<include name="test.js"/>
 		</jso>
     </target>
 	
