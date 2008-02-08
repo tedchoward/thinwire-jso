@@ -1,6 +1,6 @@
 /*
-                        ThinWire(R) JavaScript Optimizer
-                 Copyright (C) 2006-2007 Custom Credit Systems
+                          ThinWire(R) JavaScript Optimizer
+                        Copyright (C) 2003-2008 ThinWire LLC
 
   This library is free software; you can redistribute it and/or modify it under
   the terms of the GNU Lesser General Public License as published by the Free
@@ -15,10 +15,12 @@
   with this library; if not, write to the Free Software Foundation, Inc., 59
   Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-  Users interested in finding out more about the ThinWire framework should visit
-  the ThinWire framework website at http://www.thinwire.com. For those interested
-  in discussing the details of how this tool was built, you can contact the 
-  developer via email at "Joshua Gertzen" <josh at truecode dot org>.
+  Users who would rather have a commercial license, warranty or support should
+  contact the following company who supports the technology:
+  
+            ThinWire LLC, 5919 Greenville #335, Dallas, TX 75206-1906
+   	            email: info@thinwire.com    ph: +1 (214) 295-4859
+ 	                        http://www.thinwire.com
 */
 package thinwire.tools.jso;
 
