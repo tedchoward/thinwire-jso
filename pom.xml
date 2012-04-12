@@ -5,8 +5,6 @@
   <artifactId>thinwire-jso</artifactId>
   <packaging>maven-plugin</packaging>
   <version>1.2.0-SNAPSHOT</version>
-  <name>thinwire-jso Maven Mojo</name>
-  <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
       <groupId>org.apache.maven</groupId>
