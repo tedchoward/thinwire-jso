@@ -300,7 +300,7 @@ public final class Optimizer {
                             if (bi.startIndex == -1) {
                                 bi.startIndex = result.length() - 1;
                             } else {
-                                newBlock(Token.OBJLIT);
+                                newBlock(Token.OBJECTLIT);
                             }
                             
                         }
@@ -313,7 +313,7 @@ public final class Optimizer {
                         if (blockStack.size() - 1 >= 0) {
                             BlockInfo bi = blockStack.remove(blockStack.size() - 1);
                             
-                            if (bi.stmtCnt == 1 && bi.token != Token.OBJLIT && bi.token != Token.TRY && bi.token != Token.CATCH && bi.token != Token.FINALLY) {
+                            if (bi.stmtCnt == 1 && bi.token != Token.OBJECTLIT && bi.token != Token.TRY && bi.token != Token.CATCH && bi.token != Token.FINALLY) {
                                 if (bi.startIndex != -1 && bi.token == Token.IF) {
                                     //System.out.println(bi.token);
                                     //result.deleteCharAt(bi.startIndex);
@@ -484,60 +484,55 @@ public final class Optimizer {
                     result.append("=");
                     break;
     
-                case Token.ASSIGNOP:
-                    ++i;
-                    switch (source.charAt(i)) {
-                    case Token.ADD:
-                        result.append("+=");
-                        break;
-    
-                    case Token.SUB:
-                        result.append("-=");
-                        break;
-    
-                    case Token.MUL:
-                        result.append("*=");
-                        break;
-    
-                    case Token.DIV:
-                        result.append("/=");
-                        break;
-    
-                    case Token.MOD:
-                        result.append("%=");
-                        break;
-    
-                    case Token.BITOR:
-                        result.append("|=");
-                        break;
-    
-                    case Token.BITXOR:
-                        result.append("^=");
-                        break;
-    
-                    case Token.BITAND:
-                        result.append("&=");
-                        break;
-    
-                    case Token.LSH:
-                        result.append("<<=");
-                        break;
-    
-                    case Token.RSH:
-                        result.append(">>=");
-                        break;
-    
-                    case Token.URSH:
-                        result.append(">>>=");
-                        break;
-                    }
+                case Token.ASSIGN_ADD:
+                    result.append("+=");
+                    break;
+
+                case Token.ASSIGN_SUB:
+                    result.append("-=");
+                    break;
+
+                case Token.ASSIGN_MUL:
+                    result.append("*=");
+                    break;
+
+                case Token.ASSIGN_DIV:
+                    result.append("/=");
+                    break;
+
+                case Token.ASSIGN_MOD:
+                    result.append("%=");
+                    break;
+
+                case Token.ASSIGN_BITOR:
+                    result.append("|=");
+                    break;
+
+                case Token.ASSIGN_BITXOR:
+                    result.append("^=");
+                    break;
+
+                case Token.ASSIGN_BITAND:
+                    result.append("&=");
+                    break;
+
+                case Token.ASSIGN_LSH:
+                    result.append("<<=");
+                    break;
+
+                case Token.ASSIGN_RSH:
+                    result.append(">>=");
+                    break;
+
+                case Token.ASSIGN_URSH:
+                    result.append(">>>=");
                     break;
     
                 case Token.HOOK:
                     result.append("?");
                     break;
     
-                case Token.OBJLIT:
+                case Token.OBJECTLIT:
                 case Token.COLON:
                     result.append(':');
                     break;
